@@ -1,9 +1,15 @@
 class BannerView {
-  final String url;
+  final String image;
   final String description;
+  final String deepLink;
 
   BannerView(
-    this.url,
+    this.image,
     this.description,
+    this.deepLink,
   );
+
+  static BannerView empty() {
+    return BannerView('', '', '');
+  }
 }

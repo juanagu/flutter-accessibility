@@ -1,3 +1,4 @@
+import 'package:accessibilityapp/features/get_widget_catalog/progress_catalog_grid.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_fake_repository.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_grid_item.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_view.dart';
@@ -22,11 +23,7 @@ class _WidgetCatalogGridState extends State<WidgetCatalogGrid> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return SliverToBoxAdapter(
-        child: Container(
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
+        child: ProgressCatalogGrid(),
       );
     }
 

@@ -34,7 +34,7 @@ class CategoryItem extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(12.0),
                 child: Icon(
                   categoryView.iconData,
                   size: 24.0,
@@ -47,6 +47,7 @@ class CategoryItem extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Text(
                   categoryView.name,
+                  style: Theme.of(context).textTheme.subtitle1,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

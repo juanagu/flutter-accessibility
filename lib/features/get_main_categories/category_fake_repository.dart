@@ -4,7 +4,7 @@ import 'category_view.dart';
 
 class CategoryFakeRepository {
   Future<List<CategoryView>> getAll() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 4));
     return [
       CategoryView(Icons.code, 'Github'),
       CategoryView(Icons.show_chart, 'Show cases'),

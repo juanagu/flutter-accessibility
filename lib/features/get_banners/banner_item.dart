@@ -1,3 +1,4 @@
+import 'package:accessibilityapp/common/utils/url_launcher_utils.dart';
 import 'package:accessibilityapp/features/get_banners/banner_view.dart';
 import 'package:flutter/material.dart';
 
@@ -11,48 +12,72 @@ class BannerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GestureDetector(
+      onTap: _onBannerTapped,
       child: Container(
-        margin: EdgeInsets.all(5.0),
-        child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
-            child: Stack(
-              children: <Widget>[
-                Image.network(
-                  bannerView.url,
-                  fit: BoxFit.cover,
-                  width: 1000.0,
-                ),
-                Positioned(
-                  bottom: 0.0,
-                  left: 0.0,
-                  right: 0.0,
-                  child: Container(
+        child: Container(
+          color: Colors.white,
+          margin: EdgeInsets.all(5.0),
+          child: ClipRRect(
+              borderRadius: BorderRadius.all(
+                Radius.circular(5.0),
+              ),
+              child: Stack(
+                children: <Widget>[
+                  _buildImage(),
+                  Container(
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Color.fromARGB(200, 0, 0, 0),
-                          Color.fromARGB(0, 0, 0, 0)
+                          Colors.black38,
+                          Colors.transparent,
                         ],
                         begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
+                        end: Alignment.center,
                       ),
                     ),
-                    padding:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                    child: Text(
-                      bannerView.description,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+                    child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          bottom: 8.0,
+                        ),
+                        child: Text(
+                          bannerView.description,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            )),
+                ],
+              )),
+        ),
       ),
     );
+  }
+
+  Widget _buildImage() {
+    var width = 1000.0;
+    if (bannerView.image.isNotEmpty) {
+      return Image.network(
+        bannerView.image,
+        fit: BoxFit.fitHeight,
+        width: width,
+      );
+    }
+    return Container(
+      width: width,
+    );
+  }
+
+  void _onBannerTapped() {
+    if (bannerView.deepLink.isNotEmpty) {
+      UrlLauncherUtils.openUrl(bannerView.deepLink);
+    }
   }
 }

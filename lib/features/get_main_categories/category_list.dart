@@ -3,6 +3,8 @@ import 'package:accessibilityapp/features/get_main_categories/category_item.dart
 import 'package:accessibilityapp/features/get_main_categories/category_view.dart';
 import 'package:flutter/material.dart';
 
+import 'progress_category_horizontal_list.dart';
+
 class CategoryList extends StatefulWidget {
   @override
   _CategoryListState createState() => _CategoryListState();
@@ -28,9 +30,7 @@ class _CategoryListState extends State<CategoryList> {
 
   Widget _buildContent() {
     if (_isLoading) {
-      return Center(
-        child: LinearProgressIndicator(),
-      );
+      return ProgressCategoryHorizontalList();
     }
 
     return ListView.builder(

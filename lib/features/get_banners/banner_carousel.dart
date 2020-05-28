@@ -1,5 +1,6 @@
 import 'package:accessibilityapp/features/get_banners/banner_fake_repository.dart';
 import 'package:accessibilityapp/features/get_banners/banner_item.dart';
+import 'package:accessibilityapp/features/get_banners/progress_banner_carousel.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -23,9 +24,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
   @override
   Widget build(BuildContext context) {
     if (_isLoading) {
-      return Center(
-        child: CircularProgressIndicator(),
-      );
+      return ProgressBannerCarousel();
     }
 
     return _buildCarousel();
@@ -46,6 +45,9 @@ class _BannerCarouselState extends State<BannerCarousel> {
         autoPlay: true,
         aspectRatio: 2.0,
         enlargeCenterPage: true,
+        autoPlayInterval: Duration(
+          seconds: 5,
+        ),
       ),
       items: _buildBannerItems(),
     );
