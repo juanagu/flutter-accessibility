@@ -33,6 +33,7 @@ class WidgetCatalogGridItem extends StatelessWidget {
                     Icon(
                       widgetCatalogView.iconData,
                       size: 50.0,
+                      color: Theme.of(context).accentColor,
                     ),
                     Flexible(
                       child: Padding(
@@ -41,7 +42,9 @@ class WidgetCatalogGridItem extends StatelessWidget {
                         ),
                         child: Text(
                           widgetCatalogView.title,
-                          style: Theme.of(context).textTheme.subtitle2,
+                          style: Theme.of(context).textTheme.subtitle2.copyWith(
+                                color: Theme.of(context).accentColor,
+                              ),
                           textAlign: TextAlign.start,
                         ),
                       ),

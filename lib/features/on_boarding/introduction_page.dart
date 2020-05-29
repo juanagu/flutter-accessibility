@@ -29,25 +29,28 @@ class _IntroductionPageState extends State<IntroductionPage> {
   PageViewModel _buildPage(IntroPageView introPageView) {
     return PageViewModel(
       pageColor: introPageView.pageColor,
-      bubble: Icon(introPageView.bubbleIconData),
+      bubble: Icon(
+        introPageView.bubbleIconData,
+        color: Colors.black54,
+      ),
       body: Text(
         introPageView.bodyText,
       ),
+      bodyTextStyle: Theme.of(context).textTheme.headline6.copyWith(
+            color: Colors.white,
+          ),
       title: Text(
         introPageView.titleText,
       ),
-      mainImage: CircleAvatar(
-          radius: (150.0),
-          backgroundColor: Colors.transparent,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(150.0),
-            child: Image.network(
-              introPageView.mainImageUrl,
-              height: 300.0,
-              width: 300.0,
-              fit: BoxFit.cover,
-            ),
-          )),
+      mainImage: ClipRRect(
+        borderRadius: BorderRadius.circular(200.0),
+        child: Image.network(
+          introPageView.mainImageUrl,
+          height: 300.0,
+          width: 300.0,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 

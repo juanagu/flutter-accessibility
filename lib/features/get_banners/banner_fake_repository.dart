@@ -3,7 +3,7 @@ import 'banner_view.dart';
 class BannerFakeRepository {
   Future<List<BannerView>> getAll() async {
     await Future.delayed(Duration(
-      seconds: 4,
+      seconds: 3,
     ));
     return [
       BannerView(

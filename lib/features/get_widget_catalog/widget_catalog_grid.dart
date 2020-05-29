@@ -3,6 +3,7 @@ import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_fake
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_grid_item.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class WidgetCatalogGrid extends StatefulWidget {
   @override
@@ -27,6 +28,8 @@ class _WidgetCatalogGridState extends State<WidgetCatalogGrid> {
       );
     }
 
+    return _buildGrid();
+
     return SliverGrid(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -48,5 +51,18 @@ class _WidgetCatalogGridState extends State<WidgetCatalogGrid> {
       _isLoading = false;
       _catalogWidgets = result;
     });
+  }
+
+  Widget _buildGrid() {
+    return SliverStaggeredGrid.countBuilder(
+      crossAxisCount: 4,
+      itemCount: _catalogWidgets.length,
+      itemBuilder: (BuildContext context, int index) => WidgetCatalogGridItem(
+        widgetCatalogView: _catalogWidgets[index],
+      ),
+      mainAxisSpacing: 4.0,
+      crossAxisSpacing: 4.0,
+      staggeredTileBuilder: (int) => StaggeredTile.count(2, 2),
+    );
   }
 }

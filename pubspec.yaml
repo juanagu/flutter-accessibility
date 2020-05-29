@@ -30,6 +30,9 @@ dependencies:
   intro_views_flutter: 2.8.1
   shimmer: 1.1.1
   bottom_navy_bar: ^5.4.0
+  flutter_tindercard: 0.1.8
+  flutter_staggered_grid_view: 0.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

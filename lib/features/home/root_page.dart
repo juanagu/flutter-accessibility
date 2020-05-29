@@ -1,4 +1,6 @@
+import 'package:accessibilityapp/features/accessibility_information_cards/information_cards_page.dart';
 import 'package:accessibilityapp/features/home/home_page.dart';
+import 'package:accessibilityapp/features/thanks_to/thanks_to_page.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -30,12 +32,12 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: PageView(
+          physics: NeverScrollableScrollPhysics(),
           controller: _pageController,
           children: [
             HomePage(),
-            Container(),
-            Container(),
-            Container(),
+            InformationCardsPage(),
+            ThanksToPage(),
           ],
         ),
         bottomNavigationBar: BottomNavyBar(
@@ -53,16 +55,12 @@ class _RootPageState extends State<RootPage> {
               activeColor: Colors.red,
             ),
             BottomNavyBarItem(
-                icon: Icon(Icons.apps),
-                title: Text('Repos'),
+                icon: Icon(Icons.info),
+                title: Text('Info'),
                 activeColor: Colors.purpleAccent),
             BottomNavyBarItem(
-                icon: Icon(Icons.youtube_searched_for),
-                title: Text('Youtube'),
-                activeColor: Colors.pink),
-            BottomNavyBarItem(
-                icon: Icon(Icons.menu),
-                title: Text('Menu'),
+                icon: Icon(Icons.favorite),
+                title: Text('Thanks'),
                 activeColor: Colors.blue),
           ],
         ));
