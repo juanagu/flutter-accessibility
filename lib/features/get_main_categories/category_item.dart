@@ -27,7 +27,7 @@ class CategoryItem extends StatelessWidget {
                 color: Theme.of(context).cardColor,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey,
+                    color: Theme.of(context).cardTheme.shadowColor,
                     offset: Offset(0.0, 1.0), //(x,y)
                     blurRadius: 6.0,
                   ),

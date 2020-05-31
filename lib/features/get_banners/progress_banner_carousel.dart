@@ -1,4 +1,4 @@
-import 'package:accessibilityapp/common/components/shimmer_factory.dart';
+import 'package:accessibilityapp/common/components/factories/shimmer_factory.dart';
 import 'package:accessibilityapp/features/get_banners/banner_item.dart';
 import 'package:accessibilityapp/features/get_banners/banner_view.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -17,13 +17,18 @@ class ProgressBannerCarousel extends StatelessWidget {
   }
 
   Widget _buildCarousel() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        autoPlay: false,
-        aspectRatio: 2.0,
-        enlargeCenterPage: true,
+    return Semantics(
+      label: 'Cargando destacados',
+      child: ExcludeSemantics(
+        child: CarouselSlider(
+          options: CarouselOptions(
+            autoPlay: false,
+            aspectRatio: 2.6,
+            enlargeCenterPage: true,
+          ),
+          items: _buildItems(),
+        ),
       ),
-      items: _buildItems(),
     );
   }
 

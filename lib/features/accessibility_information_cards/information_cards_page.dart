@@ -1,5 +1,6 @@
 import 'package:accessibilityapp/common/utils/url_launcher_utils.dart';
 import 'package:accessibilityapp/features/accessibility_information_cards/cards/information_bullet_list_card.dart';
+import 'package:accessibilityapp/features/accessibility_information_cards/cards/information_definition_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 
@@ -16,7 +17,7 @@ class _InformationCardsPageState extends State<InformationCardsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Accessibilidad en Flutter'),
+        title: Text('Accesibilidad en Flutter'),
       ),
       body: _buildBody(context),
     );
@@ -27,7 +28,7 @@ class _InformationCardsPageState extends State<InformationCardsPage> {
       height: MediaQuery.of(context).size.height * 0.7,
       child: TinderSwapCard(
         orientation: AmassOrientation.BOTTOM,
-        totalNum: 5,
+        totalNum: 6,
         stackNum: 3,
         swipeEdge: 4.0,
         maxWidth: MediaQuery.of(context).size.width * 0.95,
@@ -42,14 +43,16 @@ class _InformationCardsPageState extends State<InformationCardsPage> {
   Widget _buildCard(BuildContext context, int index) {
     switch (index) {
       case 0:
-        return _buildPeopleWithDisabilities();
+        return _buildAccessibilityDefinition();
       case 1:
-        return _buildDisabilitiesTypes();
+        return _buildPeopleWithDisabilities();
       case 2:
-        return _buildTips();
+        return _buildDisabilitiesTypes();
       case 3:
-        return _buildTools();
+        return _buildTips();
       case 4:
+        return _buildTools();
+      case 5:
         return _buildSourceUtils();
       default:
         return Card();
@@ -149,6 +152,15 @@ class _InformationCardsPageState extends State<InformationCardsPage> {
           'https://developers.google.com/web/tools/chrome-devtools/accessibility/reference',
         )
       ],
+    );
+  }
+
+  Widget _buildAccessibilityDefinition() {
+    return InformationDefinitionCard(
+      title: 'Accesibilidad',
+      definition:
+          'Crear productos o brindar servicios de alta calidad para que todas las personas puedan usarlas.',
+      deepLink: 'https://www.w3.org/WAI/fundamentals/accessibility-intro/',
     );
   }
 }

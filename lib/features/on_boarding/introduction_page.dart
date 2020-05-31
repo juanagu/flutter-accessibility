@@ -1,4 +1,4 @@
-import 'package:accessibilityapp/features/home/root_page.dart';
+import 'package:accessibilityapp/application/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
@@ -29,26 +29,48 @@ class _IntroductionPageState extends State<IntroductionPage> {
   PageViewModel _buildPage(IntroPageView introPageView) {
     return PageViewModel(
       pageColor: introPageView.pageColor,
-      bubble: Icon(
-        introPageView.bubbleIconData,
-        color: Colors.black54,
-      ),
-      body: Text(
-        introPageView.bodyText,
-      ),
+      bubble: _buildBubble(introPageView),
+      body: _buildBody(introPageView),
       bodyTextStyle: Theme.of(context).textTheme.headline6.copyWith(
             color: Colors.white,
           ),
-      title: Text(
-        introPageView.titleText,
-      ),
-      mainImage: ClipRRect(
-        borderRadius: BorderRadius.circular(200.0),
-        child: Image.network(
-          introPageView.mainImageUrl,
-          height: 300.0,
-          width: 300.0,
-          fit: BoxFit.cover,
+      title: _buildTitle(introPageView),
+      mainImage: _buildMainImage(introPageView),
+    );
+  }
+
+  Widget _buildBubble(IntroPageView introPageView) {
+    return Icon(
+      introPageView.bubbleIconData,
+      color: Colors.black54,
+    );
+  }
+
+  Widget _buildBody(IntroPageView introPageView) {
+    return Text(
+      introPageView.bodyText,
+    );
+  }
+
+  Widget _buildTitle(IntroPageView introPageView) {
+    return Text(
+      introPageView.titleText,
+    );
+  }
+
+  Widget _buildMainImage(IntroPageView introPageView) {
+    return ExcludeSemantics(
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(
+              introPageView.mainImageUrl,
+            ),
+          ),
         ),
       ),
     );
@@ -61,27 +83,28 @@ class _IntroductionPageState extends State<IntroductionPage> {
       showBackButton: true,
       doneText: Text('COMENZAR'),
       skipText: Text('OMITIR'),
-      nextText: Icon(
-        Icons.navigate_next,
-        size: 32.0,
-        color: Colors.white,
-      ),
-      backText: Icon(
-        Icons.navigate_before,
-        size: 32.0,
-        color: Colors.white,
-      ),
+      nextText: _buildIconButton(Icons.navigate_next),
+      backText: _buildIconButton(Icons.navigate_before),
       onTapDoneButton: () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => RootPage(),
-          ), //MaterialPageRoute
-        );
+        Navigator.pushReplacementNamed(context, RoutesName.home);
       },
       pageButtonTextStyles: TextStyle(
         color: Colors.white,
         fontSize: 18.0,
+      ),
+    );
+  }
+
+  Widget _buildIconButton(IconData iconData) {
+    return SizedBox(
+      width: 48.0,
+      height: 48.0,
+      child: Center(
+        child: Icon(
+          iconData,
+          size: 32.0,
+          color: Colors.white,
+        ),
       ),
     );
   }

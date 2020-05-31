@@ -1,4 +1,4 @@
-import 'package:accessibilityapp/common/components/shimmer_factory.dart';
+import 'package:accessibilityapp/common/components/factories/shimmer_factory.dart';
 import 'package:accessibilityapp/features/get_main_categories/category_item.dart';
 import 'package:accessibilityapp/features/get_main_categories/category_view.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,12 @@ import 'package:flutter/material.dart';
 class ProgressCategoryHorizontalList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ShimmerFactory.buildShimmer(_buildFakeList());
+    return Semantics(
+      label: 'Cargando categorias',
+      child: ExcludeSemantics(
+        child: ShimmerFactory.buildShimmer(_buildFakeList()),
+      ),
+    );
   }
 
   Widget _buildFakeList() {

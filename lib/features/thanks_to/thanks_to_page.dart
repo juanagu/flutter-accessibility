@@ -1,4 +1,4 @@
-import 'package:accessibilityapp/features/on_boarding/introduction_page.dart';
+import 'package:accessibilityapp/application/routes/routes_name.dart';
 import 'package:accessibilityapp/features/thanks_to/thanks_to_dto.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -57,11 +57,6 @@ class ThanksToPage extends StatelessWidget {
   }
 
   void _reOpenApp(BuildContext context) {
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => IntroductionPage(),
-      ), //MaterialPageRoute
-    );
+    Navigator.pushReplacementNamed(context, RoutesName.initial);
   }
 }

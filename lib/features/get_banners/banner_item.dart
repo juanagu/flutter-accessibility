@@ -16,7 +16,6 @@ class BannerItem extends StatelessWidget {
       onTap: _onBannerTapped,
       child: Container(
         child: Container(
-          color: Colors.white,
           margin: EdgeInsets.all(5.0),
           child: ClipRRect(
               borderRadius: BorderRadius.all(
@@ -29,7 +28,7 @@ class BannerItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          Colors.black38,
+                          Colors.black54,
                           Colors.transparent,
                         ],
                         begin: Alignment.bottomCenter,
@@ -43,13 +42,12 @@ class BannerItem extends StatelessWidget {
                           bottom: 8.0,
                         ),
                         child: Text(
-                          bannerView.description,
+                          bannerView.description.toUpperCase(),
                           textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context).textTheme.caption.copyWith(
+                                color: Colors.white,
+                                fontSize: 16.0,
+                              ),
                         ),
                       ),
                     ),
@@ -66,7 +64,7 @@ class BannerItem extends StatelessWidget {
     if (bannerView.image.isNotEmpty) {
       return Image.network(
         bannerView.image,
-        fit: BoxFit.fitHeight,
+        fit: BoxFit.cover,
         width: width,
       );
     }

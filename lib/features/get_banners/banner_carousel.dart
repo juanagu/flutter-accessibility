@@ -43,7 +43,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
     return CarouselSlider(
       options: CarouselOptions(
         autoPlay: true,
-        aspectRatio: 2.0,
+        aspectRatio: 2.6,
         enlargeCenterPage: true,
         autoPlayInterval: Duration(
           seconds: 5,

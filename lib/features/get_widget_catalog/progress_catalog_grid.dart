@@ -1,15 +1,27 @@
-import 'package:accessibilityapp/common/components/shimmer_factory.dart';
+import 'package:accessibilityapp/common/components/factories/shimmer_factory.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_grid_item.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_view.dart';
 import 'package:flutter/material.dart';
 
 class ProgressCatalogGrid extends StatelessWidget {
+  final int crossAxisCount;
+
+  const ProgressCatalogGrid({
+    Key key,
+    this.crossAxisCount,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: ShimmerFactory.buildShimmer(
-        _buildGrid(),
+    return Semantics(
+      label: 'Cargando widgets',
+      child: ExcludeSemantics(
+        child: Container(
+          height: MediaQuery.of(context).size.height,
+          child: ShimmerFactory.buildShimmer(
+            _buildGrid(),
+          ),
+        ),
       ),
     );
   }

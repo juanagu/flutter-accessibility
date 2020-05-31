@@ -2,10 +2,15 @@ import 'package:accessibilityapp/features/get_widget_catalog/progress_catalog_gr
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_fake_repository.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_grid_item.dart';
 import 'package:accessibilityapp/features/get_widget_catalog/widget_catalog_view.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class WidgetCatalogGrid extends StatefulWidget {
+  const WidgetCatalogGrid({
+    Key key,
+  }) : super(key: key);
+
   @override
   _WidgetCatalogGridState createState() => _WidgetCatalogGridState();
 }
@@ -24,25 +29,13 @@ class _WidgetCatalogGridState extends State<WidgetCatalogGrid> {
   Widget build(BuildContext context) {
     if (_isLoading) {
       return SliverToBoxAdapter(
-        child: ProgressCatalogGrid(),
+        child: ProgressCatalogGrid(
+          crossAxisCount: 4,
+        ),
       );
     }
 
     return _buildGrid();
-
-    return SliverGrid(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-      ),
-      delegate: SliverChildBuilderDelegate(
-        (BuildContext context, int index) {
-          return WidgetCatalogGridItem(
-            widgetCatalogView: _catalogWidgets[index],
-          );
-        },
-        childCount: _catalogWidgets.length,
-      ),
-    );
   }
 
   Future<void> _loadCatalog() async {

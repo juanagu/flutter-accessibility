@@ -55,7 +55,7 @@ class InformationBulletListCard extends StatelessWidget {
 
   Widget _buildOption(BuildContext context, CardOption option) {
     return GestureDetector(
-      onTap: ()=>  _onItemTapped(option),
+      onTap: () => _onItemTapped(option),
       child: Padding(
         padding: const EdgeInsets.only(
           left: 32.0,
@@ -63,17 +63,48 @@ class InformationBulletListCard extends StatelessWidget {
           bottom: 4.0,
           top: 4.0,
         ),
-        child: Text(
-          '$bullet ${option.title}',
-          style: Theme.of(context).textTheme.headline6,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildOptionTitle(option, context),
+            _buildIcon(option),
+          ],
         ),
       ),
     );
   }
 
+  Widget _buildOptionTitle(CardOption option, BuildContext context) {
+    return Flexible(
+      child: Text(
+        '$bullet ${option.title}',
+        style: Theme.of(context).textTheme.headline6,
+      ),
+    );
+  }
+
   void _onItemTapped(CardOption option) {
-    if (option.deepLink != null && option.deepLink.isNotEmpty) {
+    if (option.hasDeepLink()) {
       UrlLauncherUtils.openUrl(option.deepLink);
     }
+  }
+
+  Widget _buildIcon(CardOption option) {
+    if (option.hasDeepLink()) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 4.0,
+        ),
+        child: Center(
+          child: Icon(
+            Icons.open_in_new,
+            size: 22.0,
+          ),
+        ),
+      );
+    }
+
+    return SizedBox();
   }
 }

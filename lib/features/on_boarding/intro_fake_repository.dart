@@ -22,7 +22,7 @@ class IntroFakeRepository {
       IntroPageView(
         Colors.purpleAccent,
         'Temas',
-        '1. ¿Qué es Accesibilidad?\n 2. ¿Como logramos que nuestras aplicaciones sean accesibles? \n 3. ¿Como testeamos si nuestras aplicaciones son accesibles? \n 4. Preguntas',
+        '1. ¿Qué es Accesibilidad?\n 2. ¿Como logramos que nuestras aplicaciones sean accesibles? \n 3. ¿Como testeamos si nuestras aplicaciones son accesibles?',
         Icons.book,
         'https://www.dreamhost.com/blog/wp-content/uploads/2016/08/DreamHost-Accessibility-Tips-750x498.jpg',
       ),
