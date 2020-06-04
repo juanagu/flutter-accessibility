@@ -24,7 +24,7 @@ class WidgetCatalogGridItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Row(
@@ -38,31 +38,21 @@ class WidgetCatalogGridItem extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12.0),
-                    child: Text(
-                      widgetCatalogView.description,
-                      style: Theme.of(context).textTheme.bodyText2,
-                      textAlign: TextAlign.start,
-                      maxLines: 3,
+                    child: Flexible(
+                      child: Text(
+                        widgetCatalogView.description,
+                        style: Theme.of(context).textTheme.bodyText2,
+                        textAlign: TextAlign.start,
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: _buildVisitButton(),
-                  )
                 ],
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildVisitButton() {
-    return ExcludeSemantics(
-      child: FlatButton(
-        child: Text('Visit'),
-        onPressed: () => {},
       ),
     );
   }
@@ -79,6 +69,8 @@ class WidgetCatalogGridItem extends StatelessWidget {
                 color: Theme.of(context).accentColor,
               ),
           textAlign: TextAlign.start,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );

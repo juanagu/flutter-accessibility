@@ -21,10 +21,24 @@ class IntroFakeRepository {
       ),
       IntroPageView(
         Colors.purpleAccent,
-        'Temas',
-        '1. ¿Qué es Accesibilidad?\n 2. ¿Como logramos que nuestras aplicaciones sean accesibles? \n 3. ¿Como testeamos si nuestras aplicaciones son accesibles?',
-        Icons.book,
+        'Accesibilidad',
+        'Que usuarios con incapacidades puedan entender, interactuar y navegar a través de nuestros productos o servicios.',
+        Icons.accessibility,
         'https://www.dreamhost.com/blog/wp-content/uploads/2016/08/DreamHost-Accessibility-Tips-750x498.jpg',
+      ),
+      IntroPageView(
+        Colors.redAccent,
+        '1.000.000.000',
+        '12% de la población mundial con incapacidades',
+        Icons.people,
+        'https://scontent.fcor5-1.fna.fbcdn.net/v/t1.0-9/27072999_1659547090750491_3947381469214513413_n.jpg?_nc_cat=104&_nc_sid=09cbfe&_nc_ohc=ZYi6vSKB_bUAX8KPNfo&_nc_ht=scontent.fcor5-1.fna&oh=89d0a4cddc2c1eb059da7ef44aef7dd1&oe=5EFF0A84',
+      ),
+      IntroPageView(
+        Colors.orangeAccent,
+        'Tipos de incapacidades',
+        '1. Ceguera parcial o total\n2. Impedimentos auditivos\n3. Impedimentos Cognitivos\n4. Deficiencia motriz',
+        Icons.accessibility,
+        'https://www.coe.int/documents/13788219/0/Disability+image/9cba4f68-5d28-ab60-2689-8e1f1316c21d?t=1511947184000',
       ),
     ];
   }

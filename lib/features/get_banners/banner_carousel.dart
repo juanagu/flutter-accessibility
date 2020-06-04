@@ -40,16 +40,18 @@ class _BannerCarouselState extends State<BannerCarousel> {
   }
 
   Widget _buildCarousel() {
-    return CarouselSlider(
-      options: CarouselOptions(
-        autoPlay: true,
-        aspectRatio: 2.6,
-        enlargeCenterPage: true,
-        autoPlayInterval: Duration(
-          seconds: 5,
+    return ExcludeSemantics(
+      child: CarouselSlider(
+        options: CarouselOptions(
+          autoPlay: true,
+          aspectRatio: 2.6,
+          enlargeCenterPage: true,
+          autoPlayInterval: Duration(
+            seconds: 5,
+          ),
         ),
+        items: _buildBannerItems(),
       ),
-      items: _buildBannerItems(),
     );
   }
 

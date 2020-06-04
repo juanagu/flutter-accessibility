@@ -7,6 +7,13 @@ import 'routes/routes_name.dart';
 import 'themes/themes.dart';
 
 class MainApplication extends StatelessWidget {
+  final Widget testWidget;
+
+  const MainApplication({
+    Key key,
+    this.testWidget,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -24,14 +31,39 @@ class MainApplication extends StatelessWidget {
   }
 
   MaterialApp _buildApp(bool isDarkMode) {
+    var setup = MaterialAppSetup(testWidget);
     return MaterialApp(
       title: 'Flutter Accessibility',
       debugShowCheckedModeBanner: false,
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      initialRoute: RoutesName.initial,
-      routes: RoutesFactory().createDefaults(),
+      home: setup.getHome(),
+      initialRoute: setup.getInitialRoute(),
+      routes: setup.getRoutes(),
     );
+  }
+}
+
+class MaterialAppSetup {
+  final Widget testWidget;
+  bool isTesting;
+
+  MaterialAppSetup(
+    this.testWidget,
+  ) {
+    isTesting = this.testWidget != null;
+  }
+
+  Widget getHome() {
+    return isTesting ? testWidget : null;
+  }
+
+  String getInitialRoute() {
+    return isTesting ? null : RoutesName.initial;
+  }
+
+  Map<String, WidgetBuilder> getRoutes() {
+    return isTesting ? null : RoutesFactory().createDefaults();
   }
 }

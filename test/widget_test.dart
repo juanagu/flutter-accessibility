@@ -5,11 +5,16 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
+import 'package:accessibilityapp/application/main_application.dart';
+import 'package:accessibilityapp/features/themes_samples/themes_samples_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:accessibilityapp/main.dart';
-
 void main() {
-  // to do
+  testWidgets('TypographicMaterialTypeScale', (WidgetTester tester) async {
+    await tester.pumpWidget(MainApplication(testWidget: ThemesSamplesPage(),));
+    expect(
+      tester,
+      meetsGuideline(textContrastGuideline),
+    );
+  });
 }

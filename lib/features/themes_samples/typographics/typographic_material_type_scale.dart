@@ -12,18 +12,25 @@ class TypographicMaterialTypeScale extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [],
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        typographicTypes.map(_buildTypeItem).toList(),
+      ),
     );
   }
 
   Widget _buildTypeItem(TypographicType typographicType) {
-    return Container(
-      child: Flexible(
+    return Flexible(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 4.0,
+        ),
         child: Text(
           typographicType.title,
           style: typographicType.textTheme,
+          maxLines: 1,
+          textDirection: TextDirection.ltr,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );

@@ -55,25 +55,24 @@ class _IntroductionPageState extends State<IntroductionPage> {
   Widget _buildTitle(IntroPageView introPageView) {
     return Text(
       introPageView.titleText,
+      textAlign: TextAlign.center,
     );
   }
 
   Widget _buildMainImage(IntroPageView introPageView) {
-    return ExcludeSemantics(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image: DecorationImage(
+    var size = MediaQuery.of(context).size.width * 0.75;
+    return CircleAvatar(
+        radius: size,
+        backgroundColor: Colors.transparent,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(size),
+          child: Image.network(
+            introPageView.mainImageUrl,
             fit: BoxFit.cover,
-            image: NetworkImage(
-              introPageView.mainImageUrl,
-            ),
+            height: size,
+            width: size,
           ),
-        ),
-      ),
-    );
+        ));
   }
 
   Widget _buildIntros() {

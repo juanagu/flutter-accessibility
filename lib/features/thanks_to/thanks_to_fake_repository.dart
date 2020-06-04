@@ -4,8 +4,14 @@ class ThanksToFakeRepository {
   List<ThanksToDto> getAll() {
     return [
       ThanksToDto(
+        'GDG Formosa',
+        'Por brindarme el espacio y la buena onda :)',
+        'https://pbs.twimg.com/profile_images/1117957521459875840/8Hc4y-FM_400x400.png',
+        'https://www.meetup.com/es-ES/GDG-Formosa/',
+      ),
+      ThanksToDto(
         'Clarika',
-        'Por el espacio y la buena onda',
+        'Por el apoyo y el sponsoreo :) ',
         'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTks9uLHScuwYBlkAXaxUr9yI7eBA-2MosoNmIpLh_ham0dJEZ7&usqp=CAU',
         'https://clarikagroup.com/',
       ),

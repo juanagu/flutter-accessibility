@@ -19,15 +19,15 @@ class ProgressBannerCarousel extends StatelessWidget {
   Widget _buildCarousel() {
     return Semantics(
       label: 'Cargando destacados',
-      child: ExcludeSemantics(
-        child: CarouselSlider(
-          options: CarouselOptions(
-            autoPlay: false,
-            aspectRatio: 2.6,
-            enlargeCenterPage: true,
-          ),
-          items: _buildItems(),
+      excludeSemantics: true,
+      textDirection: TextDirection.ltr,
+      child: CarouselSlider(
+        options: CarouselOptions(
+          autoPlay: false,
+          aspectRatio: 2.6,
+          enlargeCenterPage: true,
         ),
+        items: _buildItems(),
       ),
     );
   }

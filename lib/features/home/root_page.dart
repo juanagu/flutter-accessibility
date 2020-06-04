@@ -73,12 +73,12 @@ class _RootPageState extends State<RootPage> {
           activeColor: Colors.red,
         ),
         BottomNavyBarItem(
-            icon: Icon(Icons.info),
-            title: Text('Info'),
+            icon: Icon(Icons.important_devices),
+            title: Text('Tools'),
             activeColor: Colors.purpleAccent),
         BottomNavyBarItem(
           icon: Icon(Icons.style),
-          title: Text('Temas'),
+          title: Text('Themes'),
           activeColor: Colors.deepOrangeAccent,
         ),
         BottomNavyBarItem(
@@ -118,8 +118,9 @@ class _RootPageState extends State<RootPage> {
             ),
           ),
           _buildDrawerItem(Icons.home, 'Home', 0),
-          _buildDrawerItem(Icons.info, 'Info', 1),
-          _buildDrawerItem(Icons.favorite, 'Thanks', 2),
+          _buildDrawerItem(Icons.important_devices, 'Tools', 1),
+          _buildDrawerItem(Icons.style, 'Themes', 2),
+          _buildDrawerItem(Icons.favorite, 'Thanks', 3),
         ]),
       );
     }

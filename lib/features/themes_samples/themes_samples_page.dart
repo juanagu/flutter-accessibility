@@ -15,20 +15,22 @@ class _ThemesSamplesPageState extends State<ThemesSamplesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildBody(),
+      body: SafeArea(
+        child: _buildBody(),
+      ),
     );
   }
 
   Widget _buildBody() {
     return Padding(
-      padding: const EdgeInsets.all(
-        16.0,
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16.0,
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          _buildSwitcherTheme(),
+      child: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: _buildSwitcherTheme(),
+          ),
           _buildContent(),
         ],
       ),
@@ -38,29 +40,28 @@ class _ThemesSamplesPageState extends State<ThemesSamplesPage> {
   Widget _buildSwitcherTheme() {
     var label =
         Provider.of<AppStateNotifier>(context).isDarkMode ? 'Dark' : 'Light';
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Flexible(
-          child: Text(
-            'Tema: $label',
-            style: Theme.of(context).textTheme.headline5,
+    return Container(
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Flexible(
+            child: Text(
+              'Tema: $label',
+              style: Theme.of(context).textTheme.headline5,
+            ),
           ),
-        ),
-        SwitchTheme(),
-      ],
+          SwitchTheme(),
+        ],
+      ),
     );
   }
 
   Widget _buildContent() {
-    return Container(
-      height: double.infinity,
-      child: TypographicMaterialTypeScale(
-        typographicTypes:
-            TypographicMaterialTypeScaleFakeRepository(context).getDefault(),
-      ),
+    return TypographicMaterialTypeScale(
+      typographicTypes:
+          TypographicMaterialTypeScaleFakeRepository(context).getDefault(),
     );
   }
 }
