@@ -1,3 +1,5 @@
+import 'package:accessibilityapp/common/utils/url_launcher_utils.dart';
+import 'package:accessibilityapp/features/testing_tools/testing_tools_page.dart';
 import 'package:accessibilityapp/features/themes_samples/themes_samples_page.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:accessibilityapp/features/accessibility_information_cards/information_cards_page.dart';
@@ -39,6 +41,7 @@ class _RootPageState extends State<RootPage> {
         controller: _pageController,
         children: [
           HomePage(),
+          TestingToolsPage(),
           InformationCardsPage(),
           ThemesSamplesPage(),
           ThanksToPage(),
@@ -73,9 +76,15 @@ class _RootPageState extends State<RootPage> {
           activeColor: Colors.red,
         ),
         BottomNavyBarItem(
-            icon: Icon(Icons.important_devices),
-            title: Text('Tools'),
-            activeColor: Colors.purpleAccent),
+          icon: Icon(Icons.important_devices),
+          title: Text('Tools'),
+          activeColor: Colors.purpleAccent,
+        ),
+        BottomNavyBarItem(
+          icon: Icon(Icons.layers),
+          title: Text('Cards'),
+          activeColor: Colors.pinkAccent,
+        ),
         BottomNavyBarItem(
           icon: Icon(Icons.style),
           title: Text('Themes'),
@@ -94,38 +103,46 @@ class _RootPageState extends State<RootPage> {
     if (kIsWeb) {
       return Drawer(
         child: ListView(children: [
-          DrawerHeader(
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        'https://avatars2.githubusercontent.com/u/4689126?s=460&u=4b887c818bccb13fb8d560bd7adea1711ad092e3&v=4',
-                      ),
-                    ),
-                  ),
-                  Text(
-                    'Speaker: Juan Agú',
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                ],
-              ),
-            ),
-          ),
+          _buildDrawerHeader(context),
           _buildDrawerItem(Icons.home, 'Home', 0),
           _buildDrawerItem(Icons.important_devices, 'Tools', 1),
-          _buildDrawerItem(Icons.style, 'Themes', 2),
-          _buildDrawerItem(Icons.favorite, 'Thanks', 3),
+          _buildDrawerItem(Icons.layers, 'Cards', 2),
+          _buildDrawerItem(Icons.style, 'Themes', 3),
+          _buildDrawerItem(Icons.favorite, 'Thanks', 4),
         ]),
       );
     }
 
     return null;
+  }
+
+  Widget _buildDrawerHeader(BuildContext context) {
+    return GestureDetector(
+      onTap: () => UrlLauncherUtils.openUrl('https://github.com/juanagu'),
+      child: DrawerHeader(
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    'https://avatars2.githubusercontent.com/u/4689126?s=460&u=4b887c818bccb13fb8d560bd7adea1711ad092e3&v=4',
+                  ),
+                ),
+              ),
+              Text(
+                'Speaker: Juan Agú',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   ListTile _buildDrawerItem(IconData iconData, String title, int index) {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class IntroPageView {
+class OnBoardingViewDto {
   final Color pageColor;
   final String titleText;
   final String bodyText;
   final IconData bubbleIconData;
   final String mainImageUrl;
 
-  IntroPageView(
+  OnBoardingViewDto(
     this.pageColor,
     this.titleText,
     this.bodyText,

@@ -48,14 +48,14 @@ class _WidgetCatalogGridState extends State<WidgetCatalogGrid> {
 
   Widget _buildGrid() {
     return SliverStaggeredGrid.countBuilder(
-      crossAxisCount: 4,
+      crossAxisCount: 2,
       itemCount: _catalogWidgets.length,
       itemBuilder: (BuildContext context, int index) => WidgetCatalogGridItem(
         widgetCatalogView: _catalogWidgets[index],
       ),
       mainAxisSpacing: 4.0,
       crossAxisSpacing: 4.0,
-      staggeredTileBuilder: (int) => StaggeredTile.count(2, 2),
+      staggeredTileBuilder: (int) => StaggeredTile.fit(1),
     );
   }
 }

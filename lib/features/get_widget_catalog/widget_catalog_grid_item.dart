@@ -17,41 +17,46 @@ class WidgetCatalogGridItem extends StatelessWidget {
       hint: 'Presionar para visitar',
       child: GestureDetector(
         onTap: _onWidgetTapped,
-        child: Container(
-          height: 300.0,
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      _buildIcon(context),
-                      _buildTitle(context),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12.0),
-                    child: Flexible(
-                      child: Text(
-                        widgetCatalogView.description,
-                        style: Theme.of(context).textTheme.bodyText2,
-                        textAlign: TextAlign.start,
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: _buildContent(context),
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _buildIcon(context),
+            _buildTitle(context),
+          ],
+        ),
+        _buildDescription(context),
+      ],
+    );
+  }
+
+  Widget _buildDescription(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12.0),
+      child: Flexible(
+        child: Text(
+          widgetCatalogView.description,
+          style: Theme.of(context).textTheme.bodyText2,
+          textAlign: TextAlign.start,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
         ),
       ),
     );
@@ -69,7 +74,7 @@ class WidgetCatalogGridItem extends StatelessWidget {
                 color: Theme.of(context).accentColor,
               ),
           textAlign: TextAlign.start,
-          maxLines: 4,
+          maxLines: 2,
           overflow: TextOverflow.ellipsis,
         ),
       ),
